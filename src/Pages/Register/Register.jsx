@@ -5,7 +5,7 @@ import './Register.scss';
 const Register = () => {
   const toggleLogin = () => {
     document.querySelector('.register_wrapper').classList.remove('show');
-    document.querySelector();
+    document.querySelector('.login_wrapper').classList.add('show');
   };
 
   return (

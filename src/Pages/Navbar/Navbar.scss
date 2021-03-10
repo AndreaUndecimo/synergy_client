@@ -11,7 +11,8 @@
   z-index: 1200;
 }
 
-.register_wrapper.show {
+.register_wrapper.show,
+.login_wrapper.show {
   transform: translateY(0);
   background-color: rgba(0, 0, 0, 0.7);
   transition: transform 0s, background-color 0.6s 0.1s;

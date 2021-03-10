@@ -1,19 +1,26 @@
 import React from 'react';
+import './Login.scss';
 import { Link } from '@reach/router';
 
 const Login = () => {
+  const toggleRegister = () => {
+    document.querySelector('.login_wrapper').classList.remove('show');
+    document.querySelector('.register_wrapper').classList.add('show');
+  };
+
   return (
     <div className='form_wrapper'>
       <form>
-        <h1>Welcome to Synergy</h1>
-        <input type='text' placeholder='Name' />
-        <input type='text' placeholder='Surname' />
+        <h1>Login</h1>
         <input type='email' placeholder='Email' />
         <input type='password' placeholder='Password' />
         <div className='login_options'>
           <button type='submit'>Signup</button>
           <p>
-            Already registered? <Link to='/'>Login</Link>
+            Not a member yet?{' '}
+            <Link to='/' onClick={toggleRegister}>
+              Signup here
+            </Link>
           </p>
         </div>
       </form>
