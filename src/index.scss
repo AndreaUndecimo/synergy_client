@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
 
 * {
   margin: 0;
@@ -8,14 +8,25 @@
   box-sizing: border-box;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   line-height: 1.2;
 }
 
 body {
   line-height: 1.4em;
   font-weight: 400;
-  font-family: "Lato", sans-serif;
+  font-family: 'Lato', sans-serif;
+  height: 100%;
+  width: 100%;
+}
+
+.App {
+  height: 100vh;
 }
 
 img {
@@ -29,7 +40,9 @@ li {
   list-style-type: none;
 }
 
-input,
+input {
+  cursor: text;
+}
 button {
   background: none;
   border: none;
@@ -40,7 +53,8 @@ button {
 a,
 a:focus {
   text-decoration: none;
-  color: black;
+  color: #265426;
+  font-weight: 600;
 }
 
 img {
@@ -48,5 +62,3 @@ img {
   max-width: 100%;
   margin: 0 auto;
 }
-
-
