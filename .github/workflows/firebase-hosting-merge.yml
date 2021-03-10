@@ -16,13 +16,12 @@ jobs:
       - name: Install Dependencies
         run: npm install
       - name: Build
-        run: npm run build
+        run: CI='' npm run build
       - name: Archive Production Artifact
         uses: actions/upload-artifact@main
         with:
           name: dist
           path: dist
-        env: CI=false
   deploy:
     name: Deploy
     needs: build
