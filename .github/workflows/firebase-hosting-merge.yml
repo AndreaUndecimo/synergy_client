@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
-      - uses: actions/checkout@v2
+        uses: actions/checkout@v2
       - name: Install Dependencies
         run: npm install
       - name: Build
@@ -22,26 +22,25 @@ jobs:
         with:
           name: dist
           path: dist
-        with:
-          repoToken: '${{ secrets.GITHUB_TOKEN }}'
-          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_SYNERGY_FDDA4 }}'
-          channelId: live
-          projectId: synergy-fdda4
   deploy:
     name: Deploy
     needs: build
     runs-on: ubuntu-latest
-    steps: 
+    steps:
       - name: Checkout Repo
         uses: actions/checkout@v2
       - name: Download Artifact
         uses: actions/download-artifact@master
-        with: 
+        with:
           name: dist
           path: dist
       - name: Deploy to Firebase
         uses: FirebaseExtended/action-hosting-deploy@v0
-        with: 
+        with:
           args: deploy --only hosting
+          repoToken: '${{ secrets.GITHUB_TOKEN }}'
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_SYNERGY_FDDA4 }}'
+          channelId: live
+          projectId: synergy-fdda4
         env:
           FIREBASE_CLI_PREVIEWS: hostingchannels
