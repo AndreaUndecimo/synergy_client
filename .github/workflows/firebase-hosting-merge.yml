@@ -22,6 +22,7 @@ jobs:
         with:
           name: dist
           path: dist
+        env: CI=false
   deploy:
     name: Deploy
     needs: build
