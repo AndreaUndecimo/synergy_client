@@ -5,6 +5,10 @@ import './Navbar.scss';
 
 const Navbar = () => {
   const toggleLoginForm = (e) => {
+    document.querySelector('.login_wrapper').classList.add('show');
+  };
+
+  const toggleSignupForm = (e) => {
     document.querySelector('.register_wrapper').classList.add('show');
   };
 
@@ -24,7 +28,7 @@ const Navbar = () => {
           <button id='join_btn' onClick={toggleLoginForm}>
             Join
           </button>
-          <button id='signup_btn' onClick={toggleLoginForm}>
+          <button id='signup_btn' onClick={toggleSignupForm}>
             Sign Up
           </button>
         </div>
