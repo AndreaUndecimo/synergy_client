@@ -1,15 +1,18 @@
-import Login from './Pages/Register/Register';
 import { Router } from '@reach/router';
 import LandingPage from './Pages/LandingPage/LandingPage';
 import Navbar from './Pages/Navbar/Navbar';
+import { StateContext, Store } from './globals/globalStore.reducer';
 
 function App() {
+  const [state, dispatch] = Store();
   return (
     <div className='App'>
-      <Navbar />
-      <Router style={{ height: '100%' }}>
-        <LandingPage path='/' />
-      </Router>
+      <StateContext.Provider value={{ state, dispatch }}>
+        <Navbar />
+        <Router style={{ height: '100%' }}>
+          <LandingPage path='/' />
+        </Router>
+      </StateContext.Provider>
     </div>
   );
 }
