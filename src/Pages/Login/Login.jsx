@@ -1,20 +1,28 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import './Login.scss';
 import { Link } from '@reach/router';
 import {
   completeAuthentication,
+  getUserInfo,
   loginUser,
 } from '../../ApiServices/ApiUserService';
+import { StateContext } from '../../globals/globalStore.reducer';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const { dispatch } = useContext(StateContext);
 
-  const login = (e) => {
+  const login = async (e) => {
     e.preventDefault();
-    loginUser({ email, password }).then((res) =>
-      completeAuthentication(res.data)
-    );
+    await loginUser({ email, password }).then((res) => {
+      completeAuthentication(res.data.token);
+      getUserInfo(res.data.id).then((res) => {
+        dispatch({ type: 'user', payload: res.data });
+      });
+    });
+    dispatch({ type: 'isAuth', payload: true });
+    document.querySelector('.login_wrapper').classList.remove('show');
     setPassword('');
     setEmail('');
     try {

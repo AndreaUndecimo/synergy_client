@@ -11,6 +11,10 @@ export async function loginUser({ email, password }) {
   });
 }
 
+export async function getUserInfo(id) {
+  return axios.get(`${process.env.REACT_APP_BE_URL}/user/get_user/${id}`);
+}
+
 export async function completeAuthentication(token) {
   localStorage.setItem('token', token);
 }
